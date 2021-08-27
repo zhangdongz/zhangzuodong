@@ -10,6 +10,8 @@ Vue.config.productionTip = false
 import 'lib-flexible/flexible'
 // 全局引入按需引入UI库 vant
 import '@/plugins/vant'
+import axios from "axios"
+Vue.prototype.$http=axios
 new Vue({
   router,
   store,
