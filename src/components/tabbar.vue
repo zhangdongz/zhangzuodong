@@ -44,15 +44,16 @@ methods:{
     height: 50px;
     /* background: red; */
     display: flex;
+    background: white;
 }
 .link{
     flex: 1;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     text-align: center;
 }
 .tu{
-    width: 70%;
-    height: 70%;
+    width: 50%;
+    height: 66%;
 }
 .zi{
     display: block;

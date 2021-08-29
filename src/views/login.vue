@@ -5,7 +5,7 @@
       src="/img/1.png"
       alt=""
     >
-    <div class="dll">
+    <div class="dll" v-show="!show">
       <div class="dl">
         <van-field
           v-model="phone"
@@ -31,8 +31,23 @@
       </div>
     </div>
 
-    <div class="xx">
-      <span>*未注册的手机号将自动注册</span><span>使用密码登录</span>
+  <div class="dll" v-show="show">
+     <div class="dl" >
+        <van-field
+          v-model="phone"
+          placeholder="请输入手机号"
+        />
+        <van-field
+          v-model="yzm"
+          placeholder="请输入密码"
+        />
+      </div>
+</div>
+    <div class="xx" v-show="!show">
+      <span>*未注册的手机号将自动注册</span><span @click="bian">使用密码登录</span>
+    </div>
+    <div class="xx" v-show="show">
+      <span>找回密码</span><span @click="bian">使用验证码登录</span>
     </div>
     <br />
     <br />
@@ -51,7 +66,8 @@ export default {
       phone: "",
       yzm: "",
       spp: false,
-      shu: 60
+      shu: 60,
+      show:false
     };
   },
   methods: {
@@ -92,6 +108,9 @@ export default {
           this.$toast("验证码失败");
         }
       }
+    },
+    bian(){
+      this.show=!this.show
     }
   }
 };

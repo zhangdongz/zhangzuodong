@@ -1,5 +1,5 @@
 <template>
-    <div class="da">
+    <div class="index_da">
         <!-- 头部 -->
         <div class="index_top">
             <img class="index_tu" src="/img/2.png" alt="">
@@ -24,7 +24,6 @@
               <div class="zs1">
                  <p><span class="sp1"></span>资深讲师</p> 
               </div>
-
               <div class="zs2">
                   更多 >
               </div>
@@ -40,13 +39,13 @@
               </div>
           </div>
 
-           <div class="zzz">
+             <div class="zzz">
               <div class="zzz1">
                   <img class="zzzz" src="/img/6.png" alt="">
               </div>
               <div class="zzz2">
-                  <h3>翟现奎</h3>
-                  <p>技术经理</p>
+                  <h3>葫芦</h3>
+                  <p>葫芦葫芦  一棵藤上七个娃</p>
               </div>
           </div>
 
@@ -55,8 +54,8 @@
                   <img class="zzzz" src="/img/7.png" alt="">
               </div>
               <div class="zzz2">
-                  <h3>葫芦</h3>
-                  <p>66666</p>
+                  <h3>马兴龙</h3>
+                  <p>前端技术开发混合技术</p>
               </div>
           </div>
 
@@ -65,10 +64,13 @@
                   <img class="zzzz" src="/img/8.png" alt="">
               </div>
               <div class="zzz2">
-                  <h3>马兴龙</h3>
-                  <p>前端技术开发混合技术</p>
+                  <h3>翟现奎</h3>
+                  <p>大梦谁先醒</p>
               </div>
           </div>
+
+
+          
 
             <div class="zs">
               <div class="zs1">
@@ -117,7 +119,7 @@ export default {
         return{
            imgs:['/img/3.jpg','/img/4.jpg'] ,
            tjkc:[],
-           ms:[]
+           ms:[],
         }
     },
     methods:{
@@ -137,7 +139,7 @@ export default {
 </script>
 
 <style>
-.da{
+.index_da{
     width: 100%;
     height: 2000px;
 }
