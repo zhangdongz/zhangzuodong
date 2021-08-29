@@ -1,15 +1,28 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Index from "../views/index/index.vue"
+import Course from "../views/course/course.vue"
+import News from "../views/news/news.vue"
+import Book from "../views/book/book.vue"
+import Person from "../views/person/person.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+    redirect:"/index",
+    children:[
+      {path:"/index",name:"index",component:Index},
+      {path:"/course",name:"course",component:Course},
+      {path:"/news",name:"news",component:News},
+      {path:"/book",name:"book",component:Book},
+      {path:"/person",name:"person",component:Person},
+    ]
+  },
   {
       path: '/login',
       name: 'login',
