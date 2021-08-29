@@ -1,50 +1,50 @@
 <template>
-    <div class="login">
-        <img
-            class="tu"
-            src="/img/1.png"
-            alt=""
-        >
-        <div class="dll">
-            <div class="dl">
-                <van-field
-                    v-model="phone"
-                    placeholder="请输入手机号"
-                />
-                <van-field
-                    v-model="yzm"
-                    placeholder="请输入验证码"
-                />
-            </div>
-            <div class="anniu">
-                <van-button
-                    v-show="!spp"
-                    class="yz"
-                    plain
-                    type="primary"
-                    @click="yz"
-                >获取验证码</van-button>
-                <span
-                    v-show="spp"
-                    @click="yz"
-                >{{shu}}s</span>
-            </div>
-        </div>
-
-        <div class="xx">
-            <span>*未注册的手机号将自动注册</span><span>使用密码登录</span>
-        </div>
-        <br />
-        <br />
+  <div class="login">
+    <img
+      class="tu"
+      src="/img/1.png"
+      alt=""
+    >
+    <div class="dll">
+      <div class="dl">
+        <van-field
+          v-model="phone"
+          placeholder="请输入手机号"
+        />
+        <van-field
+          v-model="yzm"
+          placeholder="请输入验证码"
+        />
+      </div>
+      <div class="anniu">
         <van-button
-            class="jiao"
-            color="linear-gradient(to right, #ff6034, #ee0a24)"
-            @click="login"
-        >登录</van-button>
+          v-show="!spp"
+          class="yz"
+          plain
+          type="primary"
+          @click="yz"
+        >获取验证码</van-button>
+        <span
+          v-show="spp"
+          @click="yz"
+        >{{shu}}s</span>
+      </div>
     </div>
+
+    <div class="xx">
+      <span>*未注册的手机号将自动注册</span><span>使用密码登录</span>
+    </div>
+    <br />
+    <br />
+    <van-button
+      class="jiao"
+      color="linear-gradient(to right, #ff6034, #ee0a24)"
+      @click="login"
+    >登录</van-button>
+  </div>
 </template>
 <script>
-import { smsCode,login } from "@/http/api";
+import { smsCode, login } from "@/http/api";
 export default {
   data() {
     return {
@@ -77,15 +77,24 @@ export default {
       if (this.yzm == "") {
         return this.$toast("请输入验证码");
       } else {
-        var obj = {mobile:this.phone,password:this.yzm}
-        let res=await login(obj)
-        console.log(res)
-        this.$toast('登录成功')
-        this.$router.push('/pass')
+        var obj = {
+          mobile: this.phone,
+          sms_code: this.yzm,
+          client: "1",
+          type: 2
+        };
+        let res = await login(obj);
+        console.log(res);
+        if (res.data.code == 200) {
+          this.$toast("登录成功");
+          this.$router.push("/pass");
+        } else {
+          this.$toast("验证码失败");
+        }
       }
     }
   }
-}
+};
 </script>
 <style>
 .login {

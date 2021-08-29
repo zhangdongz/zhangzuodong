@@ -1,9 +1,9 @@
 <template>
     <div class="da">
         <!-- 头部 -->
-        <div class="top">
-            <img class="tu" src="/img/2.png" alt="">
-            <div class="sou">
+        <div class="index_top">
+            <img class="index_tu" src="/img/2.png" alt="">
+            <div class="index_sou">
                 <span class="sss">搜索</span><van-icon class="xxx" name="search" />
             </div>
             <van-icon class="xx" name="envelop-o" />
@@ -141,18 +141,18 @@ export default {
     width: 100%;
     height: 2000px;
 }
-.top{
+.index_top{
     height:50px;
     /* background: red; */
     display: flex;
     justify-content: space-around;
 }
-.tu{
+.index_tu{
     width: 30px;
     height: 30px;
     margin-top: 10px;
 }
-.sou{
+.index_sou{
     width: 58%;
     height: 30px;
     /* background: pink; */
