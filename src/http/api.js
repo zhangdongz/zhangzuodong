@@ -26,6 +26,7 @@ export function tabbar(arg){
     })
 }
 
+// 首页数据
 export function appIndex(arg){
     return service({
         url:request_url.appIndex,
@@ -33,3 +34,13 @@ export function appIndex(arg){
         method:'get'
     })
 }
+
+// 设置密码
+export function password(arg){
+    return service({
+        url:request_url.pass,
+        data:arg,
+        method:'post'
+    })
+}
+

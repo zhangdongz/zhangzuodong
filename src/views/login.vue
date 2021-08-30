@@ -38,33 +38,42 @@
           placeholder="请输入手机号"
         />
         <van-field
-          v-model="yzm"
+          v-model="password"
           placeholder="请输入密码"
         />
       </div>
 </div>
+
     <div class="xx" v-show="!show">
       <span>*未注册的手机号将自动注册</span><span @click="bian">使用密码登录</span>
     </div>
     <div class="xx" v-show="show">
-      <span>找回密码</span><span @click="bian">使用验证码登录</span>
+      <span @click="$router.push('/pass')">找回密码</span><span @click="bian">使用验证码登录</span>
     </div>
     <br />
     <br />
-    <van-button
+    <van-button v-show="!show"
       class="jiao"
       color="linear-gradient(to right, #ff6034, #ee0a24)"
       @click="login"
     >登录</van-button>
+
+    <van-button v-show="show"
+      class="jiao"
+      color="linear-gradient(to right, #ff6034, #ccc)"
+      @click="mmlogin"
+    >登录</van-button>
   </div>
+  
 </template>
 <script>
-import { smsCode, login } from "@/http/api";
+import { smsCode, login, password } from "@/http/api";
 export default {
   data() {
     return {
       phone: "",
       yzm: "",
+      password:'',
       spp: false,
       shu: 60,
       show:false
@@ -84,7 +93,7 @@ export default {
             clearInterval(time);
             this.spp = false;
           }
-        }, 1000);
+        },1000);
         let res = await smsCode({ mobile: this.phone, sms_type: "login" });
         console.log(res);
       }
@@ -97,20 +106,44 @@ export default {
           mobile: this.phone,
           sms_code: this.yzm,
           client: "1",
-          type: 2
+          type:2,
         };
         let res = await login(obj);
         console.log(res);
         if (res.data.code == 200) {
           this.$toast("登录成功");
-          this.$router.push("/pass");
+          this.$router.push("/person");
+        this.$store.commit('token',res.data.data.remember_token)
+        this.$store.commit('name',res.data.data.mobile)
         } else {
           this.$toast("验证码失败");
         }
       }
     },
     bian(){
-      this.show=!this.show
+      this.show=!this.show;
+    },
+    async mmlogin(){
+       if (this.password == "") {
+        return this.$toast("请输入密码");
+      } else {
+        var obj = {
+          mobile: this.phone,
+          password: `${this.password}`,
+          client: "1",
+          type:1,
+        };
+        let res = await login(obj);
+        console.log(res);
+        if (res.data.code == 200) {
+          this.$toast("登录成功");
+          this.$router.push("/person");
+        this.$store.commit('token',res.data.data.remember_token)
+        this.$store.commit('name',res.data.data.mobile)
+        } else {
+          this.$toast("密码错误");
+        }
+      }
     }
   }
 };

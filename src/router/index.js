@@ -31,8 +31,18 @@ const routes = [
   {
     path: '/pass',
     name: 'pass',
-    component: () => import('../views/pass.vue')
-}
+    component: () => import('../views/person/pass')
+  },
+  {
+    path: '/shezhi',
+    name: 'shezhi',
+    component: () => import('../views/person/shezhi')
+  },
+  {
+    path: '/zhuxiao',
+    name: 'zhuxiao',
+    component: () => import('../views/person/zhuxiao')
+  }
   // {
   //   path: '/about',
   //   name: 'About',

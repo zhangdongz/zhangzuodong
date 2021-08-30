@@ -1,11 +1,15 @@
 <template>
     <div class="my-da">
         <!-- 头 -->
-        <div class="my-top">
+        <div class="my-top" v-show="$store.state.token==''">
             <div class="my-top1">
             <div><van-icon  class="my-tu" name="user-circle-o" /></div>
             <div class="my-zi" @click="zc">登录/注册</div>
            </div>
+        </div>
+        <div class="my-top2" v-show="$store.state.token!=''">
+             <div><van-icon  class="my-top21" name="user-circle-o" />{{$store.state.name}}</div>
+             <div class="my-top22">签到</div>
         </div>
         <!-- 我的 -->
         <div class="my-my">
@@ -60,7 +64,7 @@
 
         <div class="my-kong"></div>
 
-              <div class="my-zzz">
+        <div class="my-zzz">
             <div class="my-zzz1"><van-icon name="chat-o" />消息中心</div>
             <div class="my-zzz2"></div>
         </div>
@@ -72,11 +76,11 @@
             <div class="my-zzz1"><van-icon name="friends-o" />关于我们</div>
             <div class="my-zzz2"></div>
         </div>
-              <div class="my-zzz">
+        <div class="my-zzz">
             <div class="my-zzz1"><van-icon name="records" />意见反馈</div>
             <div class="my-zzz2"></div>
         </div>
-        <div class="my-zzz">
+        <div class="my-zzz" @click="$router.push('/shezhi')">
             <div class="my-zzz1"><van-icon name="setting-o" />设置</div>
             <div class="my-zzz2"></div>
         </div>
@@ -85,6 +89,11 @@
 
 <script>
 export default {
+    data(){
+        return{
+          
+        }
+    },
     methods:{
         async zc(){
             this.$router.push('/login')
@@ -94,6 +103,26 @@ export default {
 </script>
 
 <style>
+.my-top2{
+    height: 200px;
+    background: url('/img/9.png');
+    background-size: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.my-top21{
+    margin-top: 50px;
+    font-size: 60px;
+    color: white;
+    margin-left: 20px;
+}
+.my-top22{
+    margin-top: 60px;
+    margin-right: 20px;
+    height: 30px;
+    width: 60px;
+    font-size: 20px;
+}
 .my-da{
     width: 100%;
     height: 1010px;

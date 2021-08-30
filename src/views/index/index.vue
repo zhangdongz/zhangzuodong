@@ -125,7 +125,7 @@ export default {
     methods:{
         async getdata(){
         let {data:res} = await appIndex()
-        // console.log(res);
+        console.log(res);
         this.tjkc=res.data[1].list
         this.ms=res.data[2].list
         // console.log(this.ms);
@@ -196,7 +196,7 @@ export default {
 .zs{
     width: 95%;
     margin: auto;
-    /* background: red; */
+    background: #ccc;
     height: 40px;
     display: flex;
     justify-content: space-between;
@@ -213,7 +213,7 @@ export default {
     /* background: blue; */
     text-align: right;
     font-size: 18px;
-    color: #ccc;
+    color: #999;
 }
 .sp1{
     margin-right: 10px;
