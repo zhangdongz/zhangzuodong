@@ -44,3 +44,28 @@ export function password(arg){
     })
 }
 
+// 课程页面
+export function teacher(arg){
+    return service({
+        url:request_url.teacher,
+        data:arg,
+        method:'get'
+    })
+}
+
+// 咨询
+export function news(arg){
+    return service({
+        url:request_url.news,
+        data:arg,
+        method:'get'
+    })
+}
+// 咨询内容
+export function index(arg){
+    return service({
+        url:request_url.index,
+        data:arg,
+        method:'post'
+    })
+}

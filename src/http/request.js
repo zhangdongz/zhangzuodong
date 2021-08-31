@@ -4,4 +4,7 @@ module.exports = {
     tabbar:'/nav/bottom',
     appIndex:'recommend/appIndex',
     pass:'password',
+    teacher:"teacher/search/attrs",
+    news:'information/classify',
+    index:'information/index'
 }
