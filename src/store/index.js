@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import createPersistedState from "vuex-persistedstate"
 export default new Vuex.Store({
   state: {
     token:"",
@@ -19,5 +20,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-  }
+  },
+  plugins: [createPersistedState()]
 })

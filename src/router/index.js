@@ -42,6 +42,11 @@ const routes = [
     path: '/zhuxiao',
     name: 'zhuxiao',
     component: () => import('../views/person/zhuxiao')
+  },
+  {
+    path: '/sigin',
+    name: 'sigin',
+    component: () => import('../views/sigin')
   }
   // {
   //   path: '/about',

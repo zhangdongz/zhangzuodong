@@ -9,7 +9,8 @@
         </div>
         <div class="my-top2" v-show="$store.state.token!=''">
              <div><van-icon  class="my-top21" name="user-circle-o" />{{$store.state.name}}</div>
-             <div class="my-top22">签到</div>
+             <div class="my-top22" v-show="!qd" @click="$router.push('/sigin')">签到</div>
+             <div class="my-top22" v-show="qd" >已签到</div>
         </div>
         <!-- 我的 -->
         <div class="my-my">
@@ -91,7 +92,7 @@
 export default {
     data(){
         return{
-          
+          qd:false
         }
     },
     methods:{

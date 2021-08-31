@@ -55,6 +55,7 @@ export default {
           sms_code:`${this.yzm}`,
         };
         let res = await password(obj);
+        this.$toast("设置成功");
         console.log(res);
       }
     }

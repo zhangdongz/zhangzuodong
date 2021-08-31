@@ -137,7 +137,7 @@ export default {
         console.log(res);
         if (res.data.code == 200) {
           this.$toast("登录成功");
-          this.$router.push("/person");
+        this.$router.push("/person");
         this.$store.commit('token',res.data.data.remember_token)
         this.$store.commit('name',res.data.data.mobile)
         } else {
