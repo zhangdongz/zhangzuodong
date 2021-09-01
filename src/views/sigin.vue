@@ -11,7 +11,7 @@
             <div class="sitop2">签到规则</div>
         </div>
     <van-calendar
-         title="签到"
+         title="签到"  :formatter="formatter"
         :poppable="false"
         :show-confirm="false"
         :style="{ height: '330px' }"/>
@@ -48,8 +48,41 @@
     </div>
 </template>
 <script>
+import {rili} from "@/http/api";
 export default {
-  
+  data(){
+      return{
+
+      }
+  },
+  async mounted(){
+      const tady=new Date();
+      const year=tady.getFullYear();
+      const month_new=tady.getMonth()+1;
+      const date_new=tady.getDate();
+
+  let res=await  rili({date:`${year}-${month_new}-${date_new}`})
+//   let res=await  rili(`2021-9-1`)
+    console.log(res);
+    // console.log(this.date);
+  },
+  methods: {
+      formatter(day) {
+      const month = day.date.getMonth() + 1;
+      const date = day.date.getDate();
+      
+       const tady=new Date();
+      const year=tady.getFullYear();
+      const month_new=tady.getMonth()+1;
+      const date_new=tady.getDate();
+      
+      if(month==month_new&&date_new==date){
+          day.bottomInfo="+1";
+          day.text='√'
+      }
+      return day;
+    },
+  },
 };
 </script>
 <style>
@@ -120,5 +153,8 @@ export default {
     background: red;
     margin-left: 10px;
     margin-right: 5px;
+}
+.van-calendar__selected-day{
+    border-radius: 50%;
 }
 </style>

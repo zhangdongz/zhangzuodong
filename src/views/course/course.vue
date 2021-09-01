@@ -1,6 +1,6 @@
 <template>
     <div class="couda">
-            <div class="cou-zz" v-for="(item,i) in list" :key="i" @click="$router.push(`/xiang/${item.id}`)">
+            <div class="cou-zz" v-for="(item,i) in list" :key="i" @click="$router.push(`/xiang/+${item.id}`)">
               <div class="cou-zz1">
                   <img class="cou-zzz" :src="item.avatar" alt="">
               </div>

@@ -6,5 +6,6 @@ module.exports = {
     pass:'password',
     teacher:"teacher/search/attrs",
     news:'information/classify',
-    index:'information/index'
+    index:'information/index',
+    rili:'user/integral/signRecord',
 }

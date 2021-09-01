@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {baseUrl} from '@/config'
 import {Toast} from 'vant'
-
+// import {store} from ' ../store'
 let service = axios.create({
     baseURL: baseUrl, // url = base api url + request url
     //withCredentials: true, // send cookies when cross-domain requests
@@ -15,8 +15,8 @@ service.interceptors.request.use(config => {
         message:"加载中...",
         forbidClick:true,
     })
-    //config.headers['Authorization'] = sessionStorage.getItem('token')
-
+    // config.headers['Authorization'] = sessionStorage.getItem('token')
+    // config.headers['Authorization'] ='Bearer'+  store.state.token
     return config
 },error =>{
     console.log(error);

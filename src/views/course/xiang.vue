@@ -6,7 +6,6 @@
 </template>
 <script>
 import { service } from "@/http/service";
-
 export default {
     data() {
         return {
@@ -16,7 +15,7 @@ export default {
     },
     methods:{
        async getarr(){
-        //    let res = await service.get('/teacher/'+this.$route.params.id)
+           let res = await service.get('/teacher/'+this.$route.params.id)
            console.log(res)
         }
     },

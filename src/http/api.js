@@ -18,10 +18,10 @@ export function login(arg){
     })
 }
 // tabbar
-export function tabbar(arg){
+export function tabbar(){
     return service({
         url:request_url.tabbar,
-        data:arg,
+        data:{},
         method:'get'
     })
 }
@@ -53,6 +53,7 @@ export function teacher(arg){
     })
 }
 
+
 // 咨询
 export function news(arg){
     return service({
@@ -67,5 +68,14 @@ export function index(arg){
         url:request_url.index,
         data:arg,
         method:'post'
+    })
+}
+
+// 日历
+export function rili(arg){
+    return service({
+        url:request_url.rili,
+        data:arg,
+        method:'get'
     })
 }
