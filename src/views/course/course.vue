@@ -1,6 +1,6 @@
 <template>
     <div class="couda">
-            <div class="cou-zz" v-for="(item,i) in list" :key="i" @click="$router.push(`/xiang/+${item.id}`)">
+            <div class="cou-zz" v-for="item in list" :key="item.id" @click="go(item.id)">
               <div class="cou-zz1">
                   <img class="cou-zzz" :src="item.avatar" alt="">
               </div>
@@ -24,6 +24,16 @@ export default {
             let {data:res}=await teacher()
             // console.log(res);
             this.list=res.data.list
+            // console.log(this.list);
+        },
+        go(id){
+            // console.log(id);
+            this.$router.push({
+                path:'/xiang1',
+                query:{
+                    id:id
+                }
+            })
         }
     },
     mounted(){

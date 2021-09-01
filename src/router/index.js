@@ -49,9 +49,14 @@ const routes = [
     component: () => import('../views/sigin')
   },
   {
-    path: '/xiang/:id',
-    name: 'xiang',
-    component: () => import('../views/course/xiang')
+    path: '/xiang1',
+    name: 'xiang1',
+    component: () => import('../views/xiang1')
+  },
+  {
+    path: '/xiang2',
+    name: 'xiang2',
+    component: () => import('../views/xiang2')
   }
   // {
   //   path: '/about',

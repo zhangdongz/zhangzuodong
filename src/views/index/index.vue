@@ -29,48 +29,17 @@
               </div>
           </div>
 
-          <div class="zzz">
+          <div class="zzz"  v-for="item in js" :key="item.teacher_id" @click="tiao(item.teacher_id)">
               <div class="zzz1">
-                  <img  src="/img/5.png" alt="">
+                  <img class="zzzz"  :src="item.teacher_avatar" alt="">
               </div>
               <div class="zzz2">
-                  <h3>谢龙</h3>
-                  <p>全栈开发项目经理</p>
-              </div>
-          </div>
-
-             <div class="zzz">
-              <div class="zzz1">
-                  <img class="zzzz" src="/img/6.png" alt="">
-              </div>
-              <div class="zzz2">
-                  <h3>葫芦</h3>
-                  <p>葫芦葫芦  一棵藤上七个娃</p>
-              </div>
-          </div>
-
-           <div class="zzz">
-              <div class="zzz1">
-                  <img class="zzzz" src="/img/7.png" alt="">
-              </div>
-              <div class="zzz2">
-                  <h3>马兴龙</h3>
-                  <p>前端技术开发混合技术</p>
-              </div>
-          </div>
-
-           <div class="zzz">
-              <div class="zzz1">
-                  <img class="zzzz" src="/img/8.png" alt="">
-              </div>
-              <div class="zzz2">
-                  <h3>翟现奎</h3>
-                  <p>大梦谁先醒</p>
+                  <h3>{{item.teacher_name}}</h3>
+                  <p>{{item.introduction}}</p>
               </div>
           </div>
 
 
-          
 
             <div class="zs">
               <div class="zs1">
@@ -120,16 +89,28 @@ export default {
            imgs:['/img/3.jpg','/img/4.jpg'] ,
            tjkc:[],
            ms:[],
+           js:[]
         }
     },
     methods:{
         async getdata(){
         let {data:res} = await appIndex()
-        console.log(res);
+        // console.log(res);
         this.tjkc=res.data[1].list
         this.ms=res.data[2].list
+        this.js=res.data[0].list
+        // console.log(this.js);
         // console.log(this.ms);
         // console.log(this.tjkc);
+        },
+        tiao(teacher_id){
+            // console.log(teacher_id);
+            this.$router.push({
+                path:'/xiang1',
+                query:{
+                    id:teacher_id
+                }
+            })
         }
     },
     mounted(){
