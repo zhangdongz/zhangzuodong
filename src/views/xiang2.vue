@@ -17,13 +17,21 @@
             </div>
             <div class="xx-qq2">领取&ensp;></div>
         </div>
-        <div class="xx-qq">
+        <div class="xx-qq" @click="show=true">
             <div class="xx-qq1">
                 <span class="xx-qq11">服务:</span>
                 <b class="xx-qq12">课程售后</b>
             </div>
             <div class="xx-qq2">详情&ensp;></div>
         </div>
+        <van-action-sheet v-model="show" title="课程服务">
+            <div class="xx-content">
+                <span v-for="(item,i) in info.service" :key="i">
+                     {{item.name}}
+                     {{item.description}}
+                </span>
+            </div>
+        </van-action-sheet>
         <div class="xx-kong"></div>
         <div class="xx-dui">教学团队</div>
         <div class="xx-teacher">
@@ -36,16 +44,15 @@
         <!--  -->
         <div>
         <van-tabs v-model="active" scrollspy sticky>
-           <van-tab v-for="(item,index) in kecheng" :title="  item" :key="index">
+           <van-tab v-for="(item,index) in kecheng" :title="item" :key="index">
             <div v-show="index==0" class="xx-one">
-                <p>课程介绍</p>
+                <h3>课程介绍</h3>
                 <div v-html="info.course_details"></div>
             </div>
              <div v-show="index==1" class="xx-two">
                     <p>{{ooo.title}}</p>
-                    <p>{{ooo1.teachers[0].teacher_name}}{{ooo1.teachers[1].teacher_name}}
-                        {{ooo1.start_play}}——{{ooo1.end_play}}
-                    </p>
+                    <p>{{ooo1.periods_title}}</p>
+                    <span v-for="(item,index) in ooo1.teachers" :key="index">{{item.teacher_name}}</span>
             </div>
              <div v-show="index==2" class="xx-three">
                <h3>课程评论</h3>
@@ -54,6 +61,7 @@
            </van-tab>
         </van-tabs>
         </div>
+        <van-button class="xx-bm" color="linear-gradient(to right, #ff6034, #ee0a24)">立即报名</van-button>
     </div>
 </template>
 <script>
@@ -61,36 +69,37 @@ export default {
     data(){
         return{
             id:0,
-            info:[],
+            info:{},
             teachers:[],
             kecheng:["课程介绍","课程大纲","课程评价"],
             active:'',
-            ooo:[],
-            ooo1:[]
+            ooo:{},
+            ooo1:[],
+            show:false
         }
     },
-    mounted(){
-         this.id=this.$route.query.id
-        //  console.log(this.id);
+    created(){
+         this.id=this.$route.query._id
+         console.log(this.id);
          this.getlist()
          this.getdata()
     },
     methods: {
         async getlist(){
-        let {data:res} = await  this.$http.get(
-            'http://120.53.31.103:84/api/app/courseInfo/basis_id='+this.id+"?")
-        // console.log(res); 
-        this.info=res.data.info
-        this.teachers=res.data.teachers
+            let {data:res }= await  this.$http.get('http://120.53.31.103:84/api/app/courseInfo/basis_id='+this.id);
+            // console.log(res); 
+            this.info=res.data.info
+            this.teachers=res.data.teachers
         },
         async getdata(){
             let {data:res}=await this.$http.post('http://120.53.31.103:84/api/app/courseChapter?id='+this.id)
             // console.log(res);
             this.ooo=res.data[0]
             this.ooo1=res.data[0].child[0]
-            console.log(this.ooo1);
+            // console.log(this.ooo1);
+            // console.log(this.ooo1);
         },
-         go(teacher_id){
+        go(teacher_id){
             // console.log(teacher_id);
             this.$router.push({
                 path:'/xiang1',
@@ -105,7 +114,7 @@ export default {
 <style>
 .xiang2{
     width: 100%;
-    height: 1000px;
+    height: 1140px;
 }
 .xx-tu{
     width: 230px;
@@ -186,5 +195,14 @@ export default {
     width: 150px;
     height: 150px;
     margin-left: 120px;
+}
+.xx-content{
+    height: 300px;
+}
+.xx-bm{
+    width: 300px;
+    margin: auto;
+    border-radius:30px;
+    margin-left: 45px;
 }
 </style>

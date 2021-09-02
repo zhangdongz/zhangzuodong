@@ -20,12 +20,12 @@ export default {
         }
     },
     methods:{
-        async getdata(){
-            let {data:res}=await teacher()
-            // console.log(res);
-            this.list=res.data.list
-            // console.log(this.list);
-        },
+        // async getdata(){
+        //     let {data:res}=await teacher()
+        //     // console.log(res);
+        //     this.list=res.data.list
+        //     // console.log(this.list);
+        // },
         go(id){
             // console.log(id);
             this.$router.push({
@@ -36,8 +36,12 @@ export default {
             })
         }
     },
-    mounted(){
-        this.getdata()
+   async mounted(){
+        // this.getdata()
+         let {data:res}=await teacher()
+            // console.log(res);
+            this.list=res.data.list
+        //     // console.log(this.list);
     }
 }
 </script>

@@ -42,14 +42,14 @@ export default {
                 "http://120.53.31.103:84/api/app/teacher/mainCourse?teacher_id="+this.id)
             // console.log(res);
             this.kc=res.data.list
-            // console.log(this.kc);
+            console.log(this.kc);
         },
-        async ooo(id){
+        ooo(id){
             // console.log(id);
             this.$router.push({
                 path:'/xiang2',
                 query:{
-                    id:id
+                    _id:id
                 }
             })
         }

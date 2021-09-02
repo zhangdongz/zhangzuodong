@@ -57,7 +57,12 @@ const routes = [
     path: '/xiang2',
     name: 'xiang2',
     component: () => import('../views/xiang2')
-  }
+  },
+  {
+    path: '/newx',
+    name: 'newx',
+    component: () => import('../views/news/newx')
+  },
   // {
   //   path: '/about',
   //   name: 'About',

@@ -79,3 +79,12 @@ export function rili(arg){
         method:'get'
     })
 }
+
+// 图书
+export function book(arg){
+    return service({
+        url:request_url.book,
+        data:arg,
+        method:'get'
+    })
+}
